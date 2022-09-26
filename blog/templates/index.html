@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for i in categories %}
+        <h1><a href="{% url 'category' pk=i.id %}">{{ i.title }}</a> </h1>
+    {% endfor %}
+<hr>
+      {% for i in authors %}
+        <h1><a href="{% url 'author' pk=i.id %}">{{ i.name }}</a> </h1>
+    {% endfor %}
+<hr>
+</body>
+</html>
