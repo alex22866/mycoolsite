@@ -23,4 +23,5 @@ urlpatterns = [
     path('', index, name='index'),
     path('category/<int:pk>', category, name='category'),
     path('author/<int:pk>', author, name='author'),
+    path('comments/<int:pk>', comments, name='comments'),
 ]

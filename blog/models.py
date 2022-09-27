@@ -13,7 +13,7 @@ class Post(models.Model):
 
 
 class User(models.Model):
-    name = models.CharField(max_length=32, verbose_name='Имя')
+    name = models.CharField(max_length=32, verbose_name='Имя', null=True, blank=True)
     login = models.CharField(max_length=255, verbose_name='Логин')
 
     def __str__(self):
@@ -21,11 +21,12 @@ class User(models.Model):
 
 
 class Comments(models.Model):
-    text = models.TextField(max_length=300, verbose_name='Комментарий', blank=True, null=True)
+    text = models.TextField(max_length=300, verbose_name='Комментарий', blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(to='User', verbose_name='Пользователь', on_delete=models.CASCADE) #CASCADE если пользв удалит коммы ты они вместе удалятся
 
-
-    def __str__(self):
-        return self.text
+    def __str__(self):  #что именно возращает
+        return self.text if self.text else str(self.user) #возращает текст если есть текст иначе верни юзера
 
 
 class Author(models.Model):

@@ -12,6 +12,13 @@
       {% for i in authors %}
         <h1><a href="{% url 'author' pk=i.id %}">{{ i.name }}</a> </h1>
     {% endfor %}
+
+    <hr>
+    {% for i in users %}
+    {% if i.name %}
+<!--    находит по айди если не заполнено имя-->
+        <h1><a href="{% url 'comments' pk=i.id %}">{{ i.name }}{% else %}{{ i.id }}{%endif %}</a></h1>
+    {% endfor %}
 <hr>
 </body>
 </html>
